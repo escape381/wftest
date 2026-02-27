@@ -1,0 +1,12 @@
+{
+	// 練習。本プロジェクトはデフォルト設定を無視して、タブ幅を2スペースにする。
+	"editor.tabSize": 2,
+	//
+	"editor.defaultFormatter": "biomejs.biome",
+	"[typescript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	}
+}
