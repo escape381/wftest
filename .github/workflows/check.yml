@@ -1,0 +1,26 @@
+name: Type Check and Lint
+
+# pushされた時、またはプルリクエストが作られた時に動く
+on: [push, pull_request]
+
+jobs:
+  check-code:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. GitHubのサーバーにあなたのコードを持ってくる
+      - uses: actions/checkout@v4
+
+      # 2. Node.jsの環境をセットアップする
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22' # あなたが使っているバージョンに合わせる
+          cache: 'npm'
+
+      # 3. 依存ライブラリ (TypeScriptやBiome) をインストール
+      - run: npm install
+
+      # 4. 型チェックを実行 (ファイル出力はしない)
+      - run: npx tsc --noEmit
+
+      # 5. ついでにBiomeでルール違反がないかチェック
+      - run: npx biome check .
